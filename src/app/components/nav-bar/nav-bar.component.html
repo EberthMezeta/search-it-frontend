@@ -6,3 +6,12 @@
   <a routerLink="/userManagment" routerLinkActive="active">User Managment</a>
 
 </nav>
+
+<button (click)="download()" >des</button>
+
+<button (click)="sendEmail()" >sendEmail</button>
+
+<a [href]="fileUrl" download="Mirame.pdf">DownloadFile</a>
+<div *ngIf="statistics != undefined">
+  <p> {{statistics}} </p>
+</div>

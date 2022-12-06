@@ -1,0 +1,21 @@
+<form [formGroup]="loginform" (ngSubmit)="onSubmit()" >
+
+  <label for="username">Usuario</label>
+  <input formControlName = "username" type="text">
+  <br>
+  <label for="password">Contraseña</label>
+  <input formControlName = "password" type="password">
+
+  <button>Iniciar Sesion</button>
+
+</form>
+<button (click)="showToken()"> Mostrar token</button>
+
+<div *ngIf="!isToken(); else sToken">
+  <p> {{token.access_token}} </p>
+</div>
+
+<!--Se pueden definir variables en el HRML -->
+<ng-template #sToken>
+  no hay token
+</ng-template>

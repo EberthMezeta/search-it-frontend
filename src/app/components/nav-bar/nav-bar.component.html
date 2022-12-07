@@ -7,11 +7,26 @@
 
 </nav>
 
-<button (click)="download()" >des</button>
+
 
 <button (click)="sendEmail()" >sendEmail</button>
 
 <a [href]="fileUrl" download="Mirame.pdf">DownloadFile</a>
 <div *ngIf="statistics != undefined">
   <p> {{statistics}} </p>
+</div>
+
+
+
+
+<div>
+
+  <button (click)="download($event)" taco="h" id="Mirame.pdf" >Mirame.pdf</button>
+  <button (click)="download($event)" id="Almohada.pdf" >Almohada.pdf</button>
+
+</div>
+
+<div>
+  <button (click)="viewDocument($event)" title="b" id="Mirame.pdf"> ver1 </button>
+  <button (click)="viewDocument($event)"  id="Almohada.pdf"> ver </button>
 </div>

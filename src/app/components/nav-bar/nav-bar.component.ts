@@ -24,24 +24,48 @@ export class NavBarComponent implements OnInit {
     });
   }
 
-  public download() {
-    this.documentService.downloadDocument('Mirame.pdf').subscribe((response) => {
-     console.log(response);
-     //let filename = response.headers.get('Content-Disposition')?.split(';')[1].split('=')[1];
-     let filename = 'Mirame.pdf';
-      let blob: Blob = response;
-      let a = document.createElement('a');
-      a.download = filename;
-      a.href = window.URL.createObjectURL(blob);
-      a.click();
+  public download($event: any) {
 
-    });
+    console.log($event.target.id);
+
+    if ($event.target.id !== null) {
+      let fileName = $event.target.id;
+      this.documentService.downloadDocument(fileName).subscribe((response) => {
+        console.log(response);
+        let filename = fileName;
+         let blob: Blob = response;
+         let a = document.createElement('a');
+         a.download = filename;
+         a.href = window.URL.createObjectURL(blob);
+         console.log(a);
+         a.click();
+       });
+    }
+
+
     console.log('Descargando');
   }
 
   public sendEmail() {
-    this.emailService.sendEmail("the.jonkey@gmail.com","http://artrune.com:8093/download/Mirame.pdf").subscribe(data => {
+    this.emailService.sendEmail("the.jonkey@gmail.com","http://artrune.com:8093/file/Mirame.pdf").subscribe(data => {
       console.log(data);
     });
   }
+
+  public viewDocument($event: any) {
+    console.log($event.target.title);
+    if ($event.target.id !== null) {
+      let fileName = $event.target.id;
+      this.documentService.viewDocument(fileName).subscribe((response) => {
+        console.log(response);
+        let blob: Blob = response;
+        let a = document.createElement('a');
+        a.target = '_blank';
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      });
+    }
+
+  }
+
 }

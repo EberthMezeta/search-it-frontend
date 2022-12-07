@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.token = data;
         this.TokenEmpty = false;
         console.log(this.token);
-        this.cookieService.set('token', this.token.access_token,this.token.expires_in);
+        this.cookieService.set('token', this.token.access_token,{expires: this.token.expires_in});
       }
     );
 

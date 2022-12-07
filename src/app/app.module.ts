@@ -1,3 +1,4 @@
+import { DocumentsService } from './services/documents/documents.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './services/login.service';
 import { LoginComponent } from './components/login/login.component';
@@ -39,7 +40,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LoginService, CookieService],
+  providers: [LoginService, CookieService,DocumentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
